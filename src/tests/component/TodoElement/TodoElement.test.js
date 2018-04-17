@@ -21,7 +21,7 @@ it("must render todo with prefix '(Completed)' if completed", () => {
     expect(todo.text()).toBe(`(Completed) ${expectedTodo}`);
 });
 
-it("must complete todo when clicking", done => {
+it("must complete todo when clicking on an incompleted todo", done => {
     const todo = "write some code";
     /**
      * @param {string} completedTodo
@@ -32,6 +32,26 @@ it("must complete todo when clicking", done => {
     };
     const todoElement = shallow(
         <TodoElement todo={todo} onCompleteTodo={completeTodoHandler} />
+    );
+
+    todoElement.simulate("click");
+});
+
+it("must incomplete todo when clicking on completed todo", done => {
+    const todo = "write code on the laptop";
+    /**
+     * @param {string} incompletedTodo
+     */
+    const inCompleteTodoHandler = incompletedTodo => {
+        expect(todo).toBe(incompletedTodo);
+        done();
+    };
+    const todoElement = shallow(
+        <TodoElement
+            todo={todo}
+            completed={true}
+            onIncompleteTodo={inCompleteTodoHandler}
+        />
     );
 
     todoElement.simulate("click");

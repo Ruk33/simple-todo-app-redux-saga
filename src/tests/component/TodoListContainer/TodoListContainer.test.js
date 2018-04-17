@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import {
     TodoListContainer,
     TodoListContainerConnected
@@ -11,7 +11,9 @@ import { createStore } from "../../../store";
 import {
     addTodoSuccess,
     setTodoInput,
-    addTodoRequest
+    addTodoRequest,
+    completeTodo,
+    incompleteTodo
 } from "../../../component/TodoListContainer/TodoListContainerAction";
 
 it("must render the todo list container", () => {
@@ -52,6 +54,22 @@ it("must render a save todo button with the save handler passed to the todo list
     );
     const saveButton = todoContainer.find(SaveTodosButton);
     saveButton.simulate("click");
+});
+
+it("must render a todo list with the complete handler passed to the todo list container", done => {
+    const todoContainer = mount(<TodoListContainer onCompleteTodo={done} />);
+    const usedCompleteTodoHandler = todoContainer
+        .find(TodoList)
+        .prop("onCompleteTodo");
+    usedCompleteTodoHandler();
+});
+
+it("must render a todo list with the incomplete handler passed to the todo list container", done => {
+    const todoContainer = mount(<TodoListContainer onIncompleteTodo={done} />);
+    const usedIncompleteTodoHandler = todoContainer
+        .find(TodoList)
+        .prop("onIncompleteTodo");
+    usedIncompleteTodoHandler();
 });
 
 it("must render a list of todos inside of the todo list container", () => {
@@ -121,4 +139,32 @@ it("must use add todo request as todo save handler", () => {
     const someTodo = "some non important todo";
 
     expect(usedSaveTodoHandler(someTodo)).toEqual(addTodoRequest(someTodo));
+});
+
+it("must use complete todo as complete todo hanlder", () => {
+    const store = createStore();
+    const connectedTodoList = shallow(
+        <TodoListContainerConnected store={store} />
+    );
+
+    const usedCompleteTodoHandler = connectedTodoList.prop("onCompleteTodo");
+    const someTodo = "some non important todo";
+
+    expect(usedCompleteTodoHandler(someTodo)).toEqual(completeTodo(someTodo));
+});
+
+it("must use incomplete todo as incomplete todo hanlder", () => {
+    const store = createStore();
+    const connectedTodoList = shallow(
+        <TodoListContainerConnected store={store} />
+    );
+
+    const usedIncompleteTodoHandler = connectedTodoList.prop(
+        "onIncompleteTodo"
+    );
+    const someTodo = "some non important todo";
+
+    expect(usedIncompleteTodoHandler(someTodo)).toEqual(
+        incompleteTodo(someTodo)
+    );
 });

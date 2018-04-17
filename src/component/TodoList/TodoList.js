@@ -10,7 +10,9 @@ export class TodoList extends React.Component {
                 todo: PropTypes.string,
                 completed: PropTypes.bool
             })
-        )
+        ),
+        onCompleteTodo: PropTypes.func,
+        onIncompleteTodo: PropTypes.func
     };
 
     /**
@@ -21,6 +23,8 @@ export class TodoList extends React.Component {
             <TodoElement
                 todo={get(todo, "todo")}
                 completed={get(todo, "completed")}
+                onCompleteTodo={this.props.onCompleteTodo}
+                onIncompleteTodo={this.props.onIncompleteTodo}
             />
         );
     }

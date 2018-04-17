@@ -2,7 +2,8 @@ import { get, map } from "lodash";
 import {
     ADD_TODO_SUCCESS,
     COMPLETE_TODO,
-    SET_TODO_INPUT
+    SET_TODO_INPUT,
+    INCOMPLETE_TODO
 } from "./TodoListContainerAction";
 
 /**
@@ -50,6 +51,21 @@ function completeTodo(state, completedTodo) {
 
 /**
  * @param {{todo: string, todos: {todo: string, completed: boolean}[]}} state
+ * @param {string} incompletedTodo
+ * @returns {{todo: string, todos: {todo: string, completed: boolean}[]}}
+ */
+function incompleteTodo(state, incompletedTodo) {
+    const todos = map(state.todos, todo => ({
+        ...todo,
+        completed:
+            incompletedTodo === get(todo, "todo") ? false : todo.completed
+    }));
+
+    return { ...state, todos };
+}
+
+/**
+ * @param {{todo: string, todos: {todo: string, completed: boolean}[]}} state
  * @param {{type: string, payload: {}} | undefined} action
  */
 export function todoListContainerReducer(
@@ -63,6 +79,8 @@ export function todoListContainerReducer(
             return addTodo(state, get(action, "payload.todo"));
         case COMPLETE_TODO:
             return completeTodo(state, get(action, "payload.todo"));
+        case INCOMPLETE_TODO:
+            return incompleteTodo(state, get(action, "payload.todo"));
         default:
             return state;
     }

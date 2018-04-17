@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import { TodoList } from "../../../component/TodoList/TodoList";
 import { TodoElement } from "../../../component/TodoElement/TodoElement";
 
@@ -44,4 +44,38 @@ it("must render array of todos as a list", () => {
                 />
             )
     ).toBeTruthy();
+});
+
+it("must call complete handler when clicking incompleted todo element", done => {
+    const todos = [{ todo: "listen to Rich Hickey", completed: false }];
+    /**
+     * @param {string} completedTodo
+     */
+    const completeTodoHandler = completedTodo => {
+        expect(completedTodo).toBe(todos[0].todo);
+        done();
+    };
+    const todoList = mount(
+        <TodoList todos={todos} onCompleteTodo={completeTodoHandler} />
+    );
+    const todoElement = todoList.find(TodoElement).first();
+
+    todoElement.simulate("click");
+});
+
+it("must call incomplete handler when clicking on completed todo element", done => {
+    const todos = [{ todo: "listen to Uncle Bob", completed: true }];
+    /**
+     * @param {string} incompletedTodo
+     */
+    const incompleteTodoHandler = incompletedTodo => {
+        expect(incompletedTodo).toBe(todos[0].todo);
+        done();
+    };
+    const todoList = mount(
+        <TodoList todos={todos} onIncompleteTodo={incompleteTodoHandler} />
+    );
+    const todoElement = todoList.find(TodoElement).first();
+
+    todoElement.simulate("click");
 });

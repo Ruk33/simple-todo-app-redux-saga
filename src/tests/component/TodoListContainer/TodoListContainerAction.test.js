@@ -7,7 +7,8 @@ import {
     addTodoRequest,
     addTodoSuccess,
     completeTodo,
-    sagaWatcher
+    sagaWatcher,
+    incompleteTodo
 } from "../../../component/TodoListContainer/TodoListContainerAction";
 import { addTodoService } from "../../../service/TodoService";
 
@@ -50,6 +51,14 @@ it("must return COMPLETE_TODO when completing a todo", () => {
     expect(completeTodo(completedTodo)).toEqual({
         type: "COMPLETE_TODO",
         payload: { todo: completedTodo }
+    });
+});
+
+it("must return INCOMPLETE_TODO when incompleting a todo", () => {
+    const incompletedTodo = "write some code";
+    expect(incompleteTodo(incompletedTodo)).toEqual({
+        type: "INCOMPLETE_TODO",
+        payload: { todo: incompletedTodo }
     });
 });
 

@@ -4,13 +4,20 @@ import { connect } from "react-redux";
 import { TodoInput } from "../TodoInput/TodoInput";
 import { TodoList } from "../TodoList/TodoList";
 import { SaveTodosButton } from "../SaveTodosButton/SaveTodosButton";
-import { addTodoRequest, setTodoInput } from "./TodoListContainerAction";
+import {
+    addTodoRequest,
+    setTodoInput,
+    completeTodo,
+    incompleteTodo
+} from "./TodoListContainerAction";
 
 export class TodoListContainer extends React.Component {
     static propTypes = {
         todo: PropTypes.string,
         onSaveTodo: PropTypes.func,
         onChangeTodo: PropTypes.func,
+        onCompleteTodo: PropTypes.func,
+        onIncompleteTodo: PropTypes.func,
         todos: PropTypes.arrayOf(
             PropTypes.shape({
                 todo: PropTypes.string,
@@ -24,6 +31,8 @@ export class TodoListContainer extends React.Component {
      * @param {string} props.todo
      * @param {(todo: string) => void} props.onSaveTodo
      * @param {(todo: string) => void} props.onChangeTodo
+     * @param {(todo: string) => void} props.onCompleteTodo
+     * @param {(todo: string) => void} props.onIncompleteTodo
      * @param {{todo: string, completed: boolean}[]} props.todos
      */
     constructor(props) {
@@ -43,7 +52,11 @@ export class TodoListContainer extends React.Component {
                     onChange={this.props.onChangeTodo}
                 />
                 <SaveTodosButton onClick={this.handleSaveTodo} />
-                <TodoList todos={this.props.todos} />
+                <TodoList
+                    todos={this.props.todos}
+                    onCompleteTodo={this.props.onCompleteTodo}
+                    onIncompleteTodo={this.props.onIncompleteTodo}
+                />
             </section>
         );
     }
@@ -56,6 +69,8 @@ export const TodoListContainerConnected = connect(
     }),
     {
         onSaveTodo: addTodoRequest,
-        onChangeTodo: setTodoInput
+        onChangeTodo: setTodoInput,
+        onCompleteTodo: completeTodo,
+        onIncompleteTodo: incompleteTodo
     }
 )(TodoListContainer);

@@ -2,7 +2,8 @@ import { todoListContainerReducer } from "../../../component/TodoListContainer/T
 import {
     addTodoSuccess,
     completeTodo,
-    setTodoInput
+    setTodoInput,
+    incompleteTodo
 } from "../../../component/TodoListContainer/TodoListContainerAction";
 
 it("must start todo list empty", () => {
@@ -31,6 +32,21 @@ it("must mark todo as completed when completed", () => {
     ).todos;
 
     expect(todosWithNewTodoCompleted[0].completed).toBeTruthy();
+});
+
+it("must mark todo as incompleted when incompleted", () => {
+    const newTodo = "write some code";
+    const todos = todoListContainerReducer(undefined, addTodoSuccess(newTodo));
+    const todosWithNewTodoCompleted = todoListContainerReducer(
+        todos,
+        completeTodo(newTodo)
+    );
+    const todosWithNewTodoIncompleted = todoListContainerReducer(
+        todosWithNewTodoCompleted,
+        incompleteTodo(newTodo)
+    ).todos;
+
+    expect(todosWithNewTodoIncompleted[0].completed).toBeFalsy();
 });
 
 it("must start todo input as empty text", () => {

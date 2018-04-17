@@ -5,6 +5,7 @@ export const ADD_TODO_REQUEST = "ADD_TODO_REQUEST";
 export const ADD_TODO_SUCCESS = "ADD_TODO_SUCCESS";
 export const ADD_TODO_ERROR = "ADD_TODO_ERROR";
 export const COMPLETE_TODO = "COMPLETE_TODO";
+export const INCOMPLETE_TODO = "INCOMPLETE_TODO";
 export const SET_TODO_INPUT = "SET_TODO_INPUT";
 
 export function* sagaWatcher() {
@@ -54,5 +55,13 @@ export const addTodoError = error => ({
  */
 export const completeTodo = todo => ({
     type: COMPLETE_TODO,
+    payload: { todo }
+});
+
+/**
+ * @param {string} todo
+ */
+export const incompleteTodo = todo => ({
+    type: INCOMPLETE_TODO,
     payload: { todo }
 });
