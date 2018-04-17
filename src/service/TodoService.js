@@ -1,7 +1,12 @@
-export function addTodoService({ todo }) {
-    return new Promise((resolve) => {
+import { get } from "lodash";
+
+/**
+ * @param {{todo: string}} params
+ */
+export function addTodoService(params) {
+    return new Promise(resolve => {
         setTimeout(
-            () => resolve({ todo, success: true }),
+            () => resolve({ todo: get(params, "todo"), success: true }),
             1000
         );
     });

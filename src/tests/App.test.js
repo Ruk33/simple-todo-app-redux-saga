@@ -1,3 +1,3 @@
-it('must render App component', () => {
-  expect(3).toBe(3);
+it("must render App component", () => {
+    expect(3).toBe(3);
 });
