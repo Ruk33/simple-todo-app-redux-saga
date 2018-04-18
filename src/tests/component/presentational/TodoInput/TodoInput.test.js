@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import { TodoInput } from "../../../component/TodoInput/TodoInput";
+import { TodoInput } from "../../../../component/presentational/TodoInput/TodoInput";
 
 it("must render component input with text", () => {
     const expectedTodo = "write some code";

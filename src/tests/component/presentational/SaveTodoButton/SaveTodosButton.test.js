@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { SaveTodosButton } from "../../../component/SaveTodosButton/SaveTodosButton";
+import { SaveTodosButton } from "../../../../component/presentational/SaveTodosButton/SaveTodosButton";
 
 it("must render save todos button", () => {
     const button = <SaveTodosButton />;

@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { TodoElement } from "../../../component/TodoElement/TodoElement";
+import { TodoElement } from "../../../../component/presentational/TodoElement/TodoElement";
 
 it("must render todo element", () => {
     const todoElement = <TodoElement />;

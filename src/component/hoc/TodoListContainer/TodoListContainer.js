@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { TodoInput } from "../TodoInput/TodoInput";
-import { TodoList } from "../TodoList/TodoList";
-import { SaveTodosButton } from "../SaveTodosButton/SaveTodosButton";
+import { TodoInput } from "../../presentational/TodoInput/TodoInput";
+import { TodoList } from "../../presentational/TodoList/TodoList";
+import { SaveTodosButton } from "../../presentational/SaveTodosButton/SaveTodosButton";
 import {
     addTodoRequest,
     setTodoInput,

@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import { TodoList } from "../../../component/TodoList/TodoList";
-import { TodoElement } from "../../../component/TodoElement/TodoElement";
+import { TodoList } from "../../../../component/presentational/TodoList/TodoList";
+import { TodoElement } from "../../../../component/presentational/TodoElement/TodoElement";
 
 it("must render todo list", () => {
     const todoList = <TodoList />;
