@@ -5,8 +5,8 @@ Features:
 - Add todos (use mocked service to simulate API calls)
 - Complete todos
 
-## Demo GIF
-ToDo (did you see what I did there, yeah)
+## Demo
+https://ruk33.github.io/simple-todo-app-redux-saga/
 
 ## Run app
 `npm start`
