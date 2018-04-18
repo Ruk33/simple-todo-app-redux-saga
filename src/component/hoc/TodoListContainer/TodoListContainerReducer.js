@@ -31,7 +31,7 @@ function setTodoInput(state, todo) {
  * @returns {{todo: string, todos: {todo: string, completed: boolean}[]}}
  */
 function addTodo(state, newTodo) {
-    const todos = [...state.todos, { todo: newTodo, completed: false }];
+    const todos = [...get(state, "todos"), { todo: newTodo, completed: false }];
     return { ...state, todos };
 }
 
@@ -41,9 +41,10 @@ function addTodo(state, newTodo) {
  * @returns {{todo: string, todos: {todo: string, completed: boolean}[]}}
  */
 function completeTodo(state, completedTodo) {
-    const todos = map(state.todos, todo => ({
+    const todos = map(get(state, "todos"), todo => ({
         ...todo,
-        completed: completedTodo === get(todo, "todo")
+        completed:
+            completedTodo === get(todo, "todo") ? true : get(todo, "completed")
     }));
 
     return { ...state, todos };
@@ -55,10 +56,12 @@ function completeTodo(state, completedTodo) {
  * @returns {{todo: string, todos: {todo: string, completed: boolean}[]}}
  */
 function incompleteTodo(state, incompletedTodo) {
-    const todos = map(state.todos, todo => ({
+    const todos = map(get(state, "todos"), todo => ({
         ...todo,
         completed:
-            incompletedTodo === get(todo, "todo") ? false : todo.completed
+            incompletedTodo === get(todo, "todo")
+                ? false
+                : get(todo, "completed")
     }));
 
     return { ...state, todos };
