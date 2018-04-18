@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { TodoListContainerConnected } from "./component/TodoListContainer/TodoListContainer";
+import { TodoListContainerConnected } from "./component/hoc/TodoListContainer/TodoListContainer";
 
 // @ts-ignore
 import logo from "./logo.svg";
