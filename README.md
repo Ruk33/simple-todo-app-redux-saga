@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Ruk33/simple-todo-app-redux-saga.svg?branch=master)](https://travis-ci.org/Ruk33/simple-todo-app-redux-saga)
+
 ## Simple ToDo app with redux-saga
 Simple app to learn how to use and test an application using redux-saga.
 
