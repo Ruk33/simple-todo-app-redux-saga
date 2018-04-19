@@ -6,7 +6,6 @@ node_js:
 script:
   - yarn test
   - yarn build
-  - yarn deploy
 
 deploy:
   provider: pages
