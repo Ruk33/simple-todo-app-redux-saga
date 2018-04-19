@@ -4,9 +4,9 @@ node_js:
   - "7"
 
 script:
-  yarn test
-  yarn build
-  yarn deploy
+  - yarn test
+  - yarn build
+  - yarn deploy
 
 deploy:
   provider: pages
