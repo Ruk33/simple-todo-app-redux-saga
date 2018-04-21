@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { addTodoService } from "../../../service/TodoService";
+import { addTodoService } from "service/TodoService";
 
 export const ADD_TODO_REQUEST = "ADD_TODO_REQUEST";
 export const ADD_TODO_SUCCESS = "ADD_TODO_SUCCESS";

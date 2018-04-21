@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { map, get } from "lodash";
-import { TodoElement } from "../TodoElement/TodoElement";
+import { TodoElement } from "component/presentational/TodoElement/TodoElement";
 
 export class TodoList extends React.Component {
     static propTypes = {

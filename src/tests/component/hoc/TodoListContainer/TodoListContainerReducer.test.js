@@ -1,11 +1,11 @@
 import { reduce } from "lodash";
-import { todoListContainerReducer } from "../../../../component/hoc/TodoListContainer/TodoListContainerReducer";
+import { todoListContainerReducer } from "component/hoc/TodoListContainer/TodoListContainerReducer";
 import {
     addTodoSuccess,
     completeTodo,
     setTodoInput,
     incompleteTodo
-} from "../../../../component/hoc/TodoListContainer/TodoListContainerAction";
+} from "component/hoc/TodoListContainer/TodoListContainerAction";
 
 it("must start todo list empty", () => {
     const todoListContainer = todoListContainerReducer();

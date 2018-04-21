@@ -1,4 +1,4 @@
-import { createStore } from "../store";
+import { createStore } from "store";
 
 it("must create the store", () => {
     const store = createStore();

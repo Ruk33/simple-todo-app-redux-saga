@@ -9,8 +9,8 @@ import {
     completeTodo,
     sagaWatcher,
     incompleteTodo
-} from "../../../../component/hoc/TodoListContainer/TodoListContainerAction";
-import { addTodoService } from "../../../../service/TodoService";
+} from "component/hoc/TodoListContainer/TodoListContainerAction";
+import { addTodoService } from "service/TodoService";
 
 it("must put a watcher to listen to the very last add todo request", () => {
     const watcher = sagaWatcher();

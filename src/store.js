@@ -1,8 +1,8 @@
 import * as Redux from "redux";
 import createSagaMiddleware from "redux-saga";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { todoListContainerReducer } from "./component/hoc/TodoListContainer/TodoListContainerReducer";
-import { sagaWatcher } from "./component/hoc/TodoListContainer/TodoListContainerAction";
+import { todoListContainerReducer } from "component/hoc/TodoListContainer/TodoListContainerReducer";
+import { sagaWatcher } from "component/hoc/TodoListContainer/TodoListContainerAction";
 
 function getReducers() {
     return Redux.combineReducers({

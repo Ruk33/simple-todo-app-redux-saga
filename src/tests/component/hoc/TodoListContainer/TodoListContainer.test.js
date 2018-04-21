@@ -3,18 +3,18 @@ import { shallow, mount } from "enzyme";
 import {
     TodoListContainer,
     TodoListContainerConnected
-} from "../../../../component/hoc/TodoListContainer/TodoListContainer";
-import { TodoInput } from "../../../../component/presentational/TodoInput/TodoInput";
-import { TodoList } from "../../../../component/presentational/TodoList/TodoList";
-import { SaveTodosButton } from "../../../../component/presentational/SaveTodosButton/SaveTodosButton";
-import { createStore } from "../../../../store";
+} from "component/hoc/TodoListContainer/TodoListContainer";
+import { TodoInput } from "component/presentational/TodoInput/TodoInput";
+import { TodoList } from "component/presentational/TodoList/TodoList";
+import { SaveTodosButton } from "component/presentational/SaveTodosButton/SaveTodosButton";
+import { createStore } from "store";
 import {
     addTodoSuccess,
     setTodoInput,
     addTodoRequest,
     completeTodo,
     incompleteTodo
-} from "../../../../component/hoc/TodoListContainer/TodoListContainerAction";
+} from "component/hoc/TodoListContainer/TodoListContainerAction";
 
 it("must render the todo list container", () => {
     const todoContainer = <TodoListContainer />;
