@@ -3,8 +3,9 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import registerServiceWorker from "registerServiceWorker";
 import { createStore } from "store";
-import "index.css";
-import App from "App";
+
+import "./index.scss";
+import App from "./App";
 
 ReactDOM.render(
     <Provider store={createStore()}>
